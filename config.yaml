@@ -1,0 +1,43 @@
+
+# Global settings
+timezone: "Europe/London"
+lookback_days: 3
+max_per_source: 20
+language: "en"            # "en" or "zh" etc.
+style: "academic-brief"   # summarisation tone
+
+# Journal / feed list (optional; you can leave this empty)
+journals:
+  - name: "Nature"
+    issn: ["0028-0836", "1476-4687"]
+    rss: "https://www.nature.com/nature.rss"
+  - name: "Science"
+    issn: ["0036-8075"]
+    rss: "https://www.science.org/rss/current.xml"
+
+# Keywords for search (optional; OR logic by default)
+keywords:
+  - "NK cell cytotoxicity"
+  - "bispecific antibody"
+  - "transcription factor binding site"
+
+# Sources toggle
+sources:
+  crossref: true
+  pubmed: true
+  arxiv:  true
+  biorxiv: true
+  rss:    true
+
+# Sink (output) options
+mattermost:
+  webhook_url: "${MM_WEBHOOK_URL}"  # read from env at runtime if starting with ${...}
+  channel: "#lab-feed"
+  username: "LitFeedBot"
+  icon_emoji: ":books:"
+
+gemini:
+  # Use Google AI SDK (API key); for Vertex AI, swap to your own client code if needed.
+  use_vertex: false
+  api_key_env: "GOOGLE_API_KEY"
+  model: "gemini-2.0-flash"
